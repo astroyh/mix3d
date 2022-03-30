@@ -8,8 +8,8 @@ version = "0.1.0"
 description="Mix3D: Out-of-Context Data Augmentation for 3D Scenes (3DV 2021)"
 authors = ["alexey <alexey@nekrasov.dev>"]
 readme = "README.md"
-homepage="https://github.com/kumuji/mix3d"
-repository="https://github.com/kumuji/mix3d"
+homepage="https://github.com/astroyh/mix3d"
+repository="https://github.com/astroyh/mix3d"
 license = "MIT"
 classifiers=[
     "Development Status :: 3 - Alpha",

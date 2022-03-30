@@ -4,7 +4,7 @@ general:
   freeze_backbone: false # train only last layer
 
   project_name: mix3d
-  workspace: kumuji
+  workspace: hamla
   experiment_name: baseline
 
   save_dir: saved/${general.experiment_name}/${now:%Y-%m-%d_%H%M}

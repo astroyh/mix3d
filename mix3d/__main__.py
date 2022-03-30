@@ -98,3 +98,5 @@ def test(cfg: DictConfig):
         **cfg.trainer,
     )
     runner.test(model)
+
+train()
