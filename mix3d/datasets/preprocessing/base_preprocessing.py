@@ -24,7 +24,7 @@ class BasePreprocessing:
     ):
         self.data_dir = Path(data_dir)
         self.save_dir = Path(save_dir)
-        self.n_jobs = n_jobs
+        self.n_jobs = 0
         self.modes = modes
 
         if not self.data_dir.exists():
@@ -43,11 +43,15 @@ class BasePreprocessing:
         for mode in self.modes:
             database = []
             logger.info(f"Tasks for {mode}: {len(self.files[mode])}")
-            parallel_results = Parallel(n_jobs=self.n_jobs, verbose=10)(
-                delayed(self.process_file)(file, mode) for file in self.files[mode]
-            )
-            for filebase in parallel_results:
-                database.append(filebase)
+            for file in self.files[mode]:
+                try:
+                    filebase = self.process_file(file, mode)
+                    database.append(filebase)
+                except:
+                    print('file %s passed' % file)
+            # parallel_results = Parallel(n_jobs=self.n_jobs, verbose=10)(delayed(self.process_file)(file, mode) for file in self.files[mode])
+            # for filebase in parallel_results:
+            #     database.append(filebase)
             self.save_database(database, mode)
         self.fix_bugs_in_labels()
         self.joint_database()
